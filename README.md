@@ -1,35 +1,51 @@
 # Multiple Github Accounts on one PC with SSH access to repos
 
+## Disclousure:
+
+We assume that you currently have a github profile with repos on your machine, and now, you need to add a different profile with new repos (maybe from your job). Also, we have updated the code lines to mimic Github's official documentation.
+
 ## Steps:
 
-- Generate an SSH-key
+- Generate a new SSH-key [(Official documentation)](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key)
 
-``$ ssh-keygen -t rsa -C "john@doe.com"``
+``
+$ ssh-keygen -t ed25519 -C "john@doe.com"
+``
 
-- follow the prompts and decide a name, e.g. *id_rsa_doe_company*.
+- Follow the prompts and decide a name, e.g. *id_rsa_doe_company*.
 
-- Copy the SSH public-key to GitHub from 
+- Add the new key to the SSH Agent [(Official documentation)](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent)
 
-``~/.ssh/id_rsa_doe_company.pub``
+``
+$ ssh-add ~/.ssh/id_rsa_doe_company
+``
 
-- and tell ssh about the key:
+- Copy the SSH public-key like this, and then save it on Github [(Official documentation)](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-``ssh-add ~/.ssh/id_rsa_doe_company``
+``
+$ cat ~/.ssh/id_rsa_doe_company.pub
+``
 
-- Create or Edit the config file in ~/.ssh with the following contents:
+- Create or Edit the config file in ***~/.ssh/config*** with the following contents:
 
-``Host github-doe-company
+``
+Host github-doe-company
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_rsa_doe_company``
+  IdentityFile ~/.ssh/id_rsa_doe_company
+``
 
 - Add your remote: 
 
-``git remote add origin git@github-doe-company:username/repo.git``
+``
+$ git remote add origin git@github-doe-company:username/repo.git
+``
 
-- or change using 
+- or change one using 
 
-``git remote set-url origin git@github-doe-company:username/repo.git``
+``
+$ git remote set-url origin git@github-doe-company:username/repo.git
+``
 
 ## Note
 
