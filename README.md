@@ -1,2 +1,3 @@
-# MultipleGithubAccounts
-Learn how to include several Github accounts in one machine enabling SSH access to the repos.
+# Multiple Github Accounts on one PC with SSH access to repos
+
+*NOTE*: This guide follows the indications explain on this [!StackOverflow](https://stackoverflow.com/questions/3860112/multiple-github-accounts-on-the-same-computer/3860139#3860139) Post.
