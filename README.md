@@ -28,10 +28,16 @@ $ cat ~/.ssh/id_rsa_doe_company.pub
 
 - Create or Edit the config file in ***~/.ssh/config*** with the following contents:
 
-``Host github-doe-company``
-``  HostName github.com``
-``  User git``
-``  IdentityFile ~/.ssh/id_rsa_doe_company``
+``
+Host github-doe-company
+
+    HostName github.com
+    
+    User git
+    
+    IdentityFile ~/.ssh/id_rsa_doe_company
+    
+``
 
 **That's it!** Your PC is ready to handle several repos from several github profiles. You can now clone or add repos using the correct *Host* name from your ***~/.ssh/config*** file.
 
